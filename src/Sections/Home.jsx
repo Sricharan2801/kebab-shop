@@ -1,14 +1,15 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import NavBar from '../Components/NavBar'
 import LandingImage from "../assets/Images/LandingImage.webp"
-
-
-
 const Home = () => {
+    useEffect(() => {
+        const img = new Image();
+        img.src = LandingImage;
+    }, [])
     return (
         <section id='home' className='relative w-[100vw] h-[100vh] '>
             <NavBar />
-
+            
             <div className='relative w-full lg:h-[80%] h-[90%] lg:top-[20%] top-[10%] flex lg:flex-row flex-col'>
                 <div className='lg:w-1/2 w-full h-full'>
                     <h1 className='lg:text-7xl text-6xl font-bold font-mono text-yellow-600 lg:pl-10 pl-7 pt-20 tracking-widest'>
@@ -16,7 +17,7 @@ const Home = () => {
                     </h1>
 
                     <h2 className='text-3xl font-bold font-sans lg:pl-10 pl-7 pt-4'>
-                        Delicious, Authentic, and Freshly Made Kebabs in Ballarat Central VIC 
+                        Delicious, Authentic, and Freshly Made Kebabs in Ballarat Central VIC
                     </h2>
 
                     <p className='lg:text-xl text-lg font-normal lg:pl-10 lg:pr-0 pl-7 pr-2 pt-4'>
@@ -25,7 +26,7 @@ const Home = () => {
                 </div>
 
                 <div className='lg:w-1/2 w-full h-full flex-row'>
-                    <img src={LandingImage} alt="" className='lg:w-[80%] w-[95%]' loading='lazy' />
+                    <img src={LandingImage} alt="" className='lg:w-[80%] w-[95%]'/>
                 </div>
             </div>
         </section>

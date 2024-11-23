@@ -4,25 +4,25 @@ import { aboutPageImages } from "../utils/index";
 const AboutUs = () => {
     const [currentImage, setCurrentImage] = useState(0);
 
-    // Preload images for smoother transitions
+    // Preloading images
     useEffect(() => {
         aboutPageImages.forEach((image) => {
             const img = new Image();
-            img.src = image.url; // Preload image
+            img.src = image.url;
         });
     }, []);
 
-    // Change image every 3 seconds
+    // Changing image every 3 seconds
     useEffect(() => {
         const interval = setInterval(() => {
             setCurrentImage(prev => prev === aboutPageImages.length - 1 ? 0 : prev + 1);
         }, 3000);
-        return () => clearInterval(interval); // Cleanup interval on component unmount
+        return () => clearInterval(interval); // Cleaning up the interval
     }, []);
 
     return (
         <section id='aboutUs' className='w-[100vw] lg:h-[100vh] h-auto flex lg:flex-row flex-col'>
-            {/* Text Section */}
+            
             <div className='lg:w-[60%] lg:h-full w-full  flex flex-col items-center gap-5'>
                 <h1 className='page-title pt-10'>About Us</h1>
                 <p className='pl-8 pr-8 lg:text-lg text-sm leading-6'>
@@ -60,7 +60,3 @@ const AboutUs = () => {
 };
 
 export default AboutUs;
-
-
-
-// lg:w-[75%] lg:h-[75%] w-[85%] h-[85%]

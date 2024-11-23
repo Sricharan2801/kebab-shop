@@ -16,6 +16,9 @@ import menuCard1 from "../assets/Images/MenuCard1.webp"
 import menuCard2 from "../assets/Images/MenuCard2.webp"
 import menuCard3 from "../assets/Images/MenuCard3.webp"
 
+import { FaEnvelope,FaPhone } from "react-icons/fa"
+import { FaLocationDot } from "react-icons/fa6"
+
 export const navItems = [
   { id: 1, name: "Home", path: "#home" },
   { id: 2, name: "About Us", path: "#aboutUs" },
@@ -164,7 +167,6 @@ export const menuItems = [
   },
 ];
 
-
 export const contactDetails = [
   { id: 1, name: "Address", value: "Ballarat Central VIC, Australia" },
   { id: 2, name: "Phone", value: "0466832714" },
@@ -172,3 +174,9 @@ export const contactDetails = [
   { id: 4, name: "Facebook", value: "https://www.facebook.com/people/Zestykebabs/61564518779884/" },
   { id: 5, name: "Instagram", value: "https://www.instagram.com/zesty_kebabs_/" },
 ]  
+
+export const footerItems = [
+  { id: 1, name: "Email", value: "zestykebabs@gmail.com",icon:FaEnvelope },
+  { id: 2, name: "Phone", value: "0466832714",icon:FaPhone },
+  { id: 3, name: "Address", value: "Ballarat Central VIC, Australia",icon:FaLocationDot },
+]
