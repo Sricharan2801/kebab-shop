@@ -1,19 +1,24 @@
-import React from 'react'
-import Home from './Sections/Home'
-import AboutUs from './Sections/AboutUs'
-import Menu from './Sections/Menu'
-import Contact from './Sections/Contact'
-import Footer from './Components/Footer'
+import React, { lazy, Suspense } from 'react'
+const Home = lazy(() => import('./Sections/Home'))
+const AboutUs = lazy(() => import('./Sections/AboutUs'))
+const Menu = lazy(() => import('./Sections/Menu'))
+const Contact = lazy(() => import('./Sections/Contact'))
+const Footer = lazy(() => import('./Components/Footer'))
+const Map = lazy(() => import('./Sections/Map'))
+import Loading from './Components/Loading'
 
 
 const App = () => {
   return (
     <main className='w-[100vw] '>
-      <Home/>
-      <AboutUs/>
-      <Menu/>
-      <Contact/>
-      <Footer/>           
+      <Suspense fallback={<Loading />}>
+        <Home />
+        <AboutUs />
+        <Menu />
+        <Contact />
+        <Map />
+        <Footer />
+      </Suspense>
     </main>
   )
 }

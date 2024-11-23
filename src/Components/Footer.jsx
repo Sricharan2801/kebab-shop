@@ -14,10 +14,10 @@ const Footer = () => {
         }
     }
     return (
-        <footer className='w-full h-[40vh] bg-black text-white lg:mt-0 mt-32 flex flex-col'>
+        <footer className='w-full h-[40vh] bg-black text-white lg:mt-0 mt-2 flex flex-col'>
 
             <div className='w-full h-[15%] flex items-center justify-center'>
-                <h1 className='lg:text-xl md:text-xl sm:text-sm font-semibold '> The Best Kebabs in Town, Freshly Grilled Just for You!</h1>
+                <h1 className='lg:text-xl md:text-xl sm:text-[0.75rem] font-semibold '> The Best Kebabs in Town, Freshly Grilled Just for You!</h1>
             </div>
             <hr />
             <div className='w-full lg:h-[85%] h-[70%] flex items-center justify-around '>

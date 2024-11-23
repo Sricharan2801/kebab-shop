@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { menuItems, menuCards } from '../utils/index';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -12,6 +12,18 @@ const Menu = () => {
     // Refs for the custom navigation buttons
     const prevButtonRef = useRef(null);
     const nextButtonRef = useRef(null);
+
+    useEffect(() => {
+        menuItems.forEach(image => {
+            const img = new Image()
+            img.src = image.imgSrc
+        })
+
+        menuCards.forEach(image => {
+            const img = new Image()
+            img.src = image.imgSrc
+        })
+    }, [])
 
     // Function to render stars based on rating
     const renderStars = (rating) => {
@@ -50,8 +62,8 @@ const Menu = () => {
     };
 
     return (
-        <section id="menu" className="relative w-full flex flex-col justify-center items-center">
-            <h1 className="text-5xl font-bold font-mono text-yellow-600 text-center pt-4 mb-5">
+        <section id="menu" className="relative w-[100vw] flex flex-col justify-center items-center">
+            <h1 className="page-title text-center pt-4 mb-5">
                 Menu Items
             </h1>
 
@@ -64,7 +76,7 @@ const Menu = () => {
                 />
             </div>
 
-            <h2 className="text-5xl font-bold font-mono text-yellow-600 text-center pt-4 mb-5">
+            <h2 className="page-title text-center pt-4 mb-5">
                 Our Dishes
             </h2>
 
@@ -126,14 +138,14 @@ const Menu = () => {
             {/* Custom Navigation Buttons */}
             <div className="absolute lg:top-[18rem] top-[21rem] lg:left-[7%] left-0 w-[3rem] h-[3rem] rounded-full flex justify-center items-center ">
                 <FaChevronLeft
-                    className="text-3xl text-yellow-600 cursor-pointer"
+                    className="text-4xl text-yellow-600 cursor-pointer"
                     onClick={handlePrevImage}
                 />
             </div>
 
             <div className="absolute lg:top-[18rem] top-[21rem] lg:right-[7%] right-0 w-[3rem] h-[3rem] rounded-full flex justify-center items-center ">
                 <FaChevronRight
-                    className="text-3xl text-yellow-600 cursor-pointer"
+                    className="text-4xl text-yellow-600 cursor-pointer"
                     onClick={handleNextImage}
                 />
             </div>

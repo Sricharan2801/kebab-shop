@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Logo from '/brandLogo.jpeg';
+import Logo from '/brandLogo.svg';
 import {navItems} from "../utils/index"
 import { FaHamburger, FaTimes } from 'react-icons/fa';
 
@@ -46,7 +46,7 @@ const NavBar = () => {
 
             {/* Mobile Navigation Menu */}
             {showNavItems && (
-                <div className='absolute top-24 right-0 w-[50%] bg-black bg-opacity-50'>
+                <div className='absolute top-24 right-0 w-[100%] bg-black bg-opacity-50  '>
                     <nav className='flex flex-col items-center justify-center gap-8 pt-2 pb-2'>
                         {navItems.map((item, index) => (
                             <a

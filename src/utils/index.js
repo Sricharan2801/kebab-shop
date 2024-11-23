@@ -12,15 +12,16 @@ import ZestyKebabs_Salad from "../assets/Images/ZestyKebabs_Salad.webp"
 import ZestyKebabs_SmallHSP from "../assets/Images/ZestyKebabs_SmallHSP.webp"
 import ZestyKebabs_Tabbouleh from "../assets/Images/ZestyKebabs_Tabbouleh.webp"
 
-import menuCard1 from "../assets/Images/MenuCard1.png"
-import menuCard2 from "../assets/Images/MenuCard2.png"
-import menuCard3 from "../assets/Images/MenuCard3.png"
+import menuCard1 from "../assets/Images/MenuCard1.webp"
+import menuCard2 from "../assets/Images/MenuCard2.webp"
+import menuCard3 from "../assets/Images/MenuCard3.webp"
 
 export const navItems = [
   { id: 1, name: "Home", path: "#home" },
   { id: 2, name: "About Us", path: "#aboutUs" },
   { id: 3, name: "Menu", path: "#menu" },
   { id: 4, name: "Contact", path: "#contact" },
+  { id: 5, name: "Profile", path: "#profile" }
 ];
 
 
