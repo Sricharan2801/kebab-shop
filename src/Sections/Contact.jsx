@@ -1,4 +1,3 @@
-import React from 'react'
 import { contactDetails } from '../utils'
 import { FaPhoneAlt, FaEnvelope, FaFacebook, FaInstagram } from 'react-icons/fa'
 

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { aboutPageImages } from "../utils/index";
 
 const AboutUs = () => {
@@ -22,9 +22,9 @@ const AboutUs = () => {
 
     return (
         <section id='aboutUs' className='w-[100vw] lg:h-[100vh] h-auto flex lg:flex-row flex-col'>
-            
+
             <div className='lg:w-[60%] lg:h-full w-full  flex flex-col items-center gap-5'>
-                <h1 className='page-title pt-10'>About Us</h1>
+                <h1 className='page-title pt-10'>About Zesty</h1>
                 <p className='pl-8 pr-8 lg:text-lg text-sm leading-6'>
                     Welcome to <strong>Zesty Kebabs</strong>, where we serve <strong>authentic</strong>, <strong>flavor-packed kebabs</strong> in Ballarat Central VIC. We pride ourselves on using only the <strong>freshest ingredients</strong>, ensuring every bite is delicious and satisfying.
                     At <strong>Zesty Kebabs</strong>, enjoy a variety of kebabs made with <strong>traditional Mediterranean</strong> recipes, including <strong>succulent lamb</strong>, <strong>tender chicken</strong>, and <strong>tasty vegetarian</strong> options. Whether you're after a quick takeaway or a sit-down meal, we’ve got you covered.

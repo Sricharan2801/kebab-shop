@@ -1,7 +1,19 @@
 import React from 'react'
 import { navItems, footerItems } from "../utils/index"
 import { FaFacebook, FaInstagram, FaYoutube } from 'react-icons/fa'
+import { Link, useLocation,useNavigate } from 'react-router-dom'
 const Footer = () => {
+
+    const navigate = useNavigate()
+    const location = useLocation()
+
+    const handleClick = () => {
+        if (location.pathname === '/all-categories') {
+            navigate('/')
+            window.scrollTo(0, 0);
+        }
+    }
+
     const handleSocialMedia = (platform) => {
         if (platform === 'facebook') {
             window.open('https://www.facebook.com/people/Zestykebabs/61564518779884/', '_blank');
@@ -40,7 +52,7 @@ const Footer = () => {
                 <div className='hidden w-[30%] h-[95%] lg:flex flex-col justify-around pl-10 font-semibold'>
                     {
                         navItems.map(item => (
-                            <a key={item.id} href={item.path}>{item.name}</a>
+                            <a key={item.id} href={item.path} onClick={handleClick}>{item.name}</a>
                         ))
                     }
                 </div>
@@ -49,9 +61,11 @@ const Footer = () => {
             <div className='lg:hidden w-[90%] h-[10%] flex justify-around pl-10 font-semibold mt-4'>
                 {
                     navItems.map(item => (
-                        <a key={item.id} href={item.path}>{item.name}</a>
-                    ))
+                        <a key={item.id} href={item.path} onClick={handleClick}>{item.name}</a>
+                )
+                )
                 }
+                
             </div>
         </footer>
     )
