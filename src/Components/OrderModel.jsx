@@ -1,8 +1,14 @@
 import { useState } from 'react';
 import emailjs from 'emailjs-com';
 import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
+import logo from "/logo.webp"
+import { db } from '../utils/Firebase';  // Import Firebase Firestore
+import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
+import {useCart} from '../utils/CartContext'
 
-const OrderModal = ({ isOpen, onClose, onSubmit, cartItems, totalBill }) => {
+
+const OrderModal = ({ isOpen, onClose, onSubmit, cartItems, totalBill, setIsModalOpen }) => {
     const [formData, setFormData] = useState({
         name: '',
         phone: '',
@@ -12,12 +18,16 @@ const OrderModal = ({ isOpen, onClose, onSubmit, cartItems, totalBill }) => {
     const [errors, setErrors] = useState({});
     const [loading, setLoading] = useState(false); // Add loading state
 
+    const navigate = useNavigate();
+    const { currentUser } = useCart();
+
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData((prev) => ({ ...prev, [name]: value }));
     };
 
-    const handleSubmit = (e) => {
+
+    const handleSubmit = async(e) => {
         e.preventDefault();
 
         let validationErrors = {};
@@ -44,17 +54,42 @@ const OrderModal = ({ isOpen, onClose, onSubmit, cartItems, totalBill }) => {
                         address: formData.address,
                         special_instructions:
                             formData.specialInstructions || 'No special instructions.',
-                        email: 'zestykebabs@gmail.com', // Your email or the recipient email
+                        email: 'zestykebabs@gmail.com',
                         cart_items: cartDetails,
                         total_bill: totalBill,
                     },
-                    'ZGy1RzOrisHdno2q4' // Replace with your EmailJS user ID
+                    'ZGy1RzOrisHdno2q4'
                 )
                 .then(
-                    (response) => {
+                    async (response) => {
                         console.log('Email sent successfully:', response);
-                        onSubmit(formData); // Send the form data to the parent component
-                        toast.success('Order placed successfully!');
+
+                        // Save order to Firestore
+                        try {
+                            await addDoc(collection(db, 'orders'), {
+                                userId: currentUser.uid, // Store user's ID
+                                customerName: formData.name,
+                                customerPhone: formData.phone,
+                                items: cartItems,
+                                totalBill: totalBill,
+                                specialInstructions: formData.specialInstructions,
+                                address: formData.address,
+                                status: { 
+                                    value: 'Pending', // Initial status
+                                    updatedAt: serverTimestamp() // Timestamp of the status update
+                                },
+                                timestamp: serverTimestamp(), // Automatically set timestamp
+                            });
+                            
+                          
+                            onSubmit(formData); // Send the form data to the parent component
+                            setIsModalOpen(false);
+                            navigate('/order-confirmation');
+                            toast.success('Order placed successfully!');
+                        } catch (error) {
+                            console.error('Error saving order:', error);
+                            toast.error('Failed to place order. Please try again.');
+                        }
                         setLoading(false); // Stop loading
                     },
                     (error) => {
@@ -68,6 +103,7 @@ const OrderModal = ({ isOpen, onClose, onSubmit, cartItems, totalBill }) => {
         }
     };
 
+
     if (!isOpen) return null; // Don't render the modal if it's not open
 
     return (
@@ -78,8 +114,11 @@ const OrderModal = ({ isOpen, onClose, onSubmit, cartItems, totalBill }) => {
                 </div>
             )}
 
-            <div className="bg-white p-6 rounded-lg w-96 relative">
-                <h3 className="text-xl font-bold mb-4">Order Details</h3>
+            <div className="bg-white p-4 rounded-lg w-96 relative">
+                <div className='flex gap-2 items-center'>
+                    <img src={logo} alt="zesty-logo" className='w-[4rem]' />
+                    <h3 className="text-xl font-bold ">Enter details for delivery</h3>
+                </div>
 
                 <form onSubmit={handleSubmit}>
                     {/* Name */}
@@ -150,13 +189,13 @@ const OrderModal = ({ isOpen, onClose, onSubmit, cartItems, totalBill }) => {
                         <button
                             type="button"
                             onClick={onClose}
-                            className="px-4 py-2 bg-gray-300 rounded-md hover:bg-gray-400"
+                            className="px-4 py-1 bg-gray-300 rounded-md hover:bg-gray-400"
                         >
                             Close
                         </button>
                         <button
                             type="submit"
-                            className="px-6 py-3 bg-orange-600 text-white rounded-lg hover:bg-orange-700"
+                            className="px-6 py-2 bg-orange-600 text-white rounded-lg hover:bg-orange-700"
                         >
                             Submit Order
                         </button>

@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { allMenuItems } from '../utils';
 import { FaArrowLeft, FaArrowRight, FaShoppingCart, FaMinus, FaPlus } from 'react-icons/fa';
 import { useCart } from '../utils/CartContext';
+import menu from "../assets/menu.webp"
 
 const CategoriesPage = () => {
   const categoryRefs = useRef({});
@@ -47,6 +48,7 @@ const CategoriesPage = () => {
     allMenuItems.forEach(item => {
       const img = new Image();
       img.src = item.items.map(item => item.url);
+      img.src = menu
     });
   }, []);
 
@@ -59,7 +61,9 @@ const CategoriesPage = () => {
   }, [location]);
 
   return (
-    <section className="w-full mb-20 px-8">
+    <section className=" w-[100vw] h-auto px-8 bg-[#FFFAFA]">
+
+
       <div className='flex gap-4 '>
         <button className='lg:text-lg text-sm flex items-center gap-2 mb-4 mt-8 px-4 py-2 bg-gray-300 rounded font-semibold hover:text-orange-600'
           onClick={() => handleCategoryItems('home')}>
@@ -74,11 +78,17 @@ const CategoriesPage = () => {
         </button>
       </div>
 
+      <div className='relative w-full py-5 flex items-center lg:justify-between justify-around'>
+
+        <h1 className='lg:text-6xl text-2xl font-bold text-white absolute lg:top-10 top-6 lg:left-10 left-4'>Zesty Menu</h1>
+        <img src={menu} alt="" className='w-full object-cover lg:h-[25rem] h-[10rem]' />
+      </div>
+
       {allMenuItems.map((category) => (
         <div
           key={category.id}
           ref={(el) => (categoryRefs.current[category.id] = el)}
-          className="mb-8 mt-2"
+          className="mb-8 mt-2 "
         >
           <div className='flex gap-2'>
             <div className="w-1 h-10 bg-orange-500"></div>
@@ -90,9 +100,9 @@ const CategoriesPage = () => {
               return (
                 <div
                   key={item.id}
-                  className="flex flex-col items-center p-4 border rounded-lg shadow-md cursor-pointer hover:shadow-lg"
+                  className=" flex flex-col items-center p-4 border rounded-lg shadow-md cursor-pointer hover:shadow-lg"
                 >
-                  <div className="w-[10rem] h-[10rem] bg-black rounded-lg overflow-hidden mb-2">
+                  <div className="w-[10rem] h-[10rem] bg-black rounded-lg overflow-hidden mb-2 hover:scale-110">
                     <img
                       src={item.url}
                       alt={item.name}
@@ -100,8 +110,8 @@ const CategoriesPage = () => {
                     />
                   </div>
                   <h3 className="text-lg text-slate-700 font-semibold mb-2">{item.name}</h3>
-                  <div className="w-full flex lg:flex-row flex-col justify-around items-center">
-                    <p className="text-lg font-bold">${item.price}</p>
+                  <div className=" lg:text-lg text-sm w-full flex lg:flex-row flex-col justify-around items-center gap-2">
+                    <p className=" font-bold">${item.price}</p>
 
                     {!isInCart ? (
                       <button

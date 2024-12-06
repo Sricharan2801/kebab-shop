@@ -21,7 +21,7 @@ const FooterWith404 = CheckPage(Footer);
 const Home = () => {
 
     return (
-        <section id='home' className=' w-[100vw] h-[100vh] '>
+        <section id='home' className=' w-[100vw]  bg-[#FFFAFA] '>
             <Suspense fallback={<Loading />}>
                 <NavBarWith404 />
                 <LandingPageWith404 />

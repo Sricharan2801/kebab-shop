@@ -1,7 +1,11 @@
-import React from 'react'
-import brandLogo from "/brandLogo.svg"
+import React,{useEffect} from 'react'
+import brandLogo from "/logo.webp"
 
 const Loading = () => {
+    useEffect(() => {
+        const img = new Image();
+        img.src = brandLogo
+    })
     return (
         <div className='w-[100vw] h-[100vh] flex flex-col justify-center items-center gap-2'>
 
@@ -9,7 +13,7 @@ const Loading = () => {
                 <img src={brandLogo} alt="Logo" className='w-full h-full object-cover'/>
                
             </div>
-            <p className='text-2xl text-green-600'>Loading...</p>
+            <p className='text-2xl font-bold text-green-600'>Loading...</p>
         </div>
     )
 }

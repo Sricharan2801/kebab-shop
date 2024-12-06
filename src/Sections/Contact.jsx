@@ -3,7 +3,7 @@ import { FaPhoneAlt, FaEnvelope, FaFacebook, FaInstagram } from 'react-icons/fa'
 
 const Contact = () => {
     return (
-        <section id='contact' className='w-full h-full flex lg:flex-row flex-col pb-20 pt-10'>
+        <section id='contact' className='w-full  flex lg:flex-row flex-col pb-20 pt-10'>
             <div className='lg:w-[30%] w-full h-full pb-10 flex flex-col gap-8'>
                 <h1 className='page-title lg:pl-[15%] pl-10  lg:pt-24'>
                     Get in touch

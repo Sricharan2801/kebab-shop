@@ -19,11 +19,11 @@ const Menu = () => {
 
   return (
     <section id="menu" className="relative w-[100vw]">
-      <h1 className="page-title text-center pt-4 mb-5">
+      <h1 className="page-title text-center pt-4 mb-5 ">
         Menu Items
       </h1>
 
-      <div className="ml-[2%] w-[7rem] flex justify-around items-center">
+      <div className="ml-[2%] w-[8rem] flex justify-around items-center">
         <div className="w-1 h-10 bg-orange-500"></div>
         <h2 className="text-lg font-mono font-semibold text-orange-600">Categories</h2>
       </div>

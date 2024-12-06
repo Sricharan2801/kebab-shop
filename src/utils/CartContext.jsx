@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
+import { auth } from './Firebase';
 
 // Create the context
 const CartContext = createContext();
@@ -11,13 +12,28 @@ export const CartProvider = ({ children }) => {
         return storedCartItems || [];
     });
 
+    const [currentUser, setCurrentUser] = useState(null);
+ 
+    useEffect(() => {
+        const unsubscribe = auth.onAuthStateChanged((user) => {
+            if (user) {
+                setCurrentUser(user);
+            } else {
+                setCurrentUser(null);
+            }
+        });
+        return unsubscribe; // Cleanup the listener on unmount
+    }, []);
+
     // Save to localStorage whenever cartItems changes
     useEffect(() => {
         localStorage.setItem('cartItems', JSON.stringify(cartItems));
     }, [cartItems]);
 
     return (
-        <CartContext.Provider value={{ cartItems, setCartItems }}>
+        <CartContext.Provider value={{
+            cartItems, setCartItems, currentUser, setCurrentUser
+        }}>
             {children}
         </CartContext.Provider>
     );

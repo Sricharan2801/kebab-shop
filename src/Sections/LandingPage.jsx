@@ -8,9 +8,9 @@ const LandingPage = () => {
     }, [])
     return (
         <section className='w-full h-[100vh]'>
-            <div className='relative w-full lg:h-[80%] h-[90%] lg:top-[20%] top-[10%] flex lg:flex-row flex-col'>
+            <div className='relative w-full  lg:h-[80%] h-[90%] lg:top-[20%] top-[10%] flex lg:flex-row flex-col'>
                 <div className='lg:w-1/2 w-full h-full'>
-                    <h1 className='lg:text-7xl text-6xl font-bold font-mono text-yellow-600 lg:pl-10 pl-7 pt-20 tracking-widest'>
+                    <h1 className='lg:text-7xl text-6xl font-bold font-mono text-orange-600 lg:pl-10 pl-7 pt-20 tracking-widest'>
                         Zesty Kebabs
                     </h1>
 
@@ -23,7 +23,7 @@ const LandingPage = () => {
                     </p>
                 </div>
 
-                <div className='lg:w-1/2 w-full h-full flex-row'>
+                <div className='lg:w-1/2  w-full h-full flex-row'>
                     <img src={LandingImage} alt="" className='lg:w-[80%] w-[95%]' />
                 </div>
             </div>

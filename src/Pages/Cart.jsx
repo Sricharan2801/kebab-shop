@@ -2,18 +2,28 @@
 import OrderModal from '../Components/OrderModel'
 import CartItem from "../Components/CartItem"
 import { useState, useMemo } from 'react'
-import { FaArrowLeft, FaPlus, FaMinus, FaTrash } from 'react-icons/fa'
+import { FaArrowLeft} from 'react-icons/fa'
 import { useNavigate } from 'react-router-dom'
 import { useCart } from '../utils/CartContext'
+import toast from 'react-hot-toast'
 
 const Cart = () => {
-    const { cartItems, setCartItems } = useCart();
+    const { cartItems, setCartItems,currentUser } = useCart();
     const navigate = useNavigate();
 
     // Modal State
     const [isModalOpen, setIsModalOpen] = useState(false);
 
-    const handlePlaceOrder = () => setIsModalOpen(true);
+    const handlePlaceOrder = () => {
+        if(!currentUser){
+            toast.error('Please sign in to place an order.',{
+                duration: 6000,
+                hideProgressBar: true
+            });
+            navigate('/sign-in');
+        }
+        setIsModalOpen(true);
+    }
     const handleCloseModal = () => setIsModalOpen(false);
 
     const handleCategoryItems = (category) => {
@@ -151,6 +161,7 @@ const Cart = () => {
                 onSubmit={handleOrderSubmit}
                 cartItems={uniqueCartItems}
                 totalBill={totalBill} // Pass the unique cart items
+                setIsModalOpen={setIsModalOpen}
             />
         </section>
     );

@@ -1,15 +1,15 @@
-import React, { lazy } from 'react'
-const PageNotFound = lazy(() => import('./PageNotFound'))
+import React from 'react';
+import PageNotFound from './PageNotFound';
 
 const CheckPage = (Component) => {
-    return (props) => {
-        try {
-            if (!Component) <PageNotFound />
-            return <Component {...props} />
-        } catch (error) {
-            return <PageNotFound />
-        }
+  return (props) => {
+    try {
+      return <Component {...props} />;
+    } catch (error) {
+      console.error("Error loading page:", error);
+      return <PageNotFound />;
     }
-}
+  };
+};
 
-export default CheckPage
+export default CheckPage;

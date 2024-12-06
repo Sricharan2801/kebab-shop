@@ -25,7 +25,8 @@ export const navItems = [
   { id: 2, name: "About Us", path: "#aboutUs" },
   { id: 3, name: "Menu", path: "#menu" },
   { id: 4, name: "Contact", path: "#contact" },
-  { id: 5, name: "Profile", path: "#profile" }
+  { id: 5, name: "Profile", path: "#profile" },
+  { id: 6, name: "Orders",path:"/user-orders" }
 ];
 
 
