@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Inter&family=Lato:wght@400;700;900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -23,7 +24,7 @@ button{
 }
 
 .page-title{
-  @apply text-4xl font-bold font-mono text-orange-600
+  @apply text-4xl font-bold font-inter text-orange-600
 }
 
 
@@ -37,6 +38,22 @@ button{
 
 .input-box-style{
   @apply block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6
+}
+
+.nav-icon{
+  @apply lg:hidden text-3xl w-[40%] z-10 cursor-pointer text-orange-600
+}
+
+.profile-btns{
+  @apply lg:w-[15%] w-[60%] text-black font-semibold bg-gray-200 py-2 rounded-lg ml-4
+}
+
+.cart-page-btns{
+  @apply lg:text-sm text-xs font-inter flex items-center gap-2 px-4 py-2 bg-gray-300 rounded font-semibold hover:text-orange-600
+}
+
+.allCategory-page-btns{
+  @apply  text-sm font-inter flex items-center gap-2 mb-4 mt-8 px-4 py-2 bg-gray-300 rounded font-semibold hover:text-orange-600
 }
 
 
@@ -65,3 +82,22 @@ button{
 .animate-scale-in {
   animation: scale-in 0.8s ease-out;
 }
+
+
+.slide-animation-right{
+  animation: slideRight 1s ease;
+}
+
+
+@keyframes slideRight {
+  0% {
+      transform: translateX(100%);
+  }
+
+  100% {
+      transform: translate(0);
+  }
+}
+     
+
+

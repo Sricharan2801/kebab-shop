@@ -23,9 +23,9 @@ const Menu = () => {
         Menu Items
       </h1>
 
-      <div className="ml-[2%] w-[8rem] flex justify-around items-center">
+      <div className="ml-[2%] w-[8rem] mb-2 flex justify-around items-center">
         <div className="w-1 h-10 bg-orange-500"></div>
-        <h2 className="text-lg font-mono font-semibold text-orange-600">Categories</h2>
+        <h2 className="text-lg font-poppins font-semibold text-orange-600">Categories</h2>
       </div>
 
       <div className="w-[96%] ml-[2%] flex flex-wrap justify-center gap-5">

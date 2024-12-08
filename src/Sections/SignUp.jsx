@@ -76,7 +76,7 @@ const SignUp = () => {
     }, []);
 
     return (
-        <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
+        <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-8 lg:px-8">
             {/* Navigate to home */}
             <div className="absolute top-5 left-5">
                 <Link to="/">

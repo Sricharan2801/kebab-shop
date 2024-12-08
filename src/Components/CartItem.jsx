@@ -8,7 +8,7 @@ const CartItem = ({ item, incrementItem, decrementItem, deleteItem }) => (
                 className="w-16 h-16 rounded-md object-cover"
             />
             <div>
-                <h3 className="text-lg font-bold">{item.name}</h3>
+                <h3 className="text-lg font-inter  font-bold">{item.name}</h3>
                 <p className="text-gray-600">{item.description}</p>
             </div>
         </div>

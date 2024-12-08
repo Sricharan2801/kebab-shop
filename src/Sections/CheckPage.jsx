@@ -1,5 +1,5 @@
 import React from 'react';
-import PageNotFound from './PageNotFound';
+import PageNotFound from '../Sections/PageNotFound';
 
 const CheckPage = (Component) => {
   return (props) => {

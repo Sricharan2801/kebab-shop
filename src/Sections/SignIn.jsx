@@ -4,7 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { auth } from '../utils/Firebase';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import toast from 'react-hot-toast';
-import ForgetPasswordModel from './ForgetPasswordModel';
+import ForgetPasswordModel from '../Components/ForgetPasswordModel';
 import { FaArrowLeft } from 'react-icons/fa';
 
 const SignIn = () => {

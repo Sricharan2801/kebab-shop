@@ -3,14 +3,15 @@ import { updatePassword } from 'firebase/auth';
 import { auth } from '../utils/Firebase';
 import toast from 'react-hot-toast';
 import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai'; // Import eye icons
+import NavBtns from './Buttons/NavBtns';
 
 const UpdatePassword = ({ onClose }) => {
   const [newPassword, setNewPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [passwordError, setPasswordError] = useState('');
   const [loading, setLoading] = useState(false);
-  const [showNewPassword, setShowNewPassword] = useState(false); // State to toggle visibility of new password
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false); // State to toggle visibility of confirm password
+  const [showNewPassword, setShowNewPassword] = useState(false); // Toggle visibility for new password
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false); // Toggle visibility for confirm password
 
   const handlePasswordUpdate = async () => {
     if (newPassword !== confirmPassword) {
@@ -36,67 +37,71 @@ const UpdatePassword = ({ onClose }) => {
   };
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 p-4">
-      <div className="bg-white rounded-lg shadow-md p-6 w-full max-w-sm relative">
-        <button
-          className="absolute top-2 right-2 text-gray-600 hover:text-gray-800"
+    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 p-4 z-50 transition-opacity">
+      <div className="bg-white rounded-lg shadow-lg p-6 w-full max-w-md transform transition-transform scale-95 hover:scale-100 relative">
+        <NavBtns
+          className="absolute top-2 right-2 text-lg text-gray-600 hover:text-red-600 hover:font-bold transition-colors"
           onClick={onClose}
         >
           ✕
-        </button>
-        <h2 className="text-lg font-semibold mb-4 text-center">Update Password</h2>
+        </NavBtns>
+        <h2 className="text-xl font-semibold text-center mb-6 text-indigo-700">Update Password</h2>
         <div>
-          {/* New Password Input */}
-          <label className="block mb-2 text-sm font-medium">New Password</label>
+          {/* New Password */}
+          <label className="block mb-2 text-sm font-medium text-gray-700">New Password</label>
           <div className="relative">
             <input
-              type={showNewPassword ? "text" : "password"} // Toggle password visibility
+              type={showNewPassword ? "text" : "password"}
               value={newPassword}
               onChange={(e) => setNewPassword(e.target.value)}
               placeholder="Enter your new password"
-              className="input-box-style w-full"
+              className="w-full px-4 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
             />
             <span
-              className="absolute right-3 top-3 cursor-pointer"
-              onClick={() => setShowNewPassword(!showNewPassword)} // Toggle visibility
+              className="absolute right-3 top-3 cursor-pointer text-gray-500 hover:text-indigo-600"
+              onClick={() => setShowNewPassword(!showNewPassword)}
             >
               {showNewPassword ? <AiFillEyeInvisible /> : <AiFillEye />}
             </span>
           </div>
 
-          {/* Confirm Password Input */}
-          <label className="block mt-2 mb-2 text-sm font-medium">Confirm Password</label>
+          {/* Confirm Password */}
+          <label className="block mt-4 mb-2 text-sm font-medium text-gray-700">Confirm Password</label>
           <div className="relative">
             <input
-              type={showConfirmPassword ? "text" : "password"} // Toggle password visibility
+              type={showConfirmPassword ? "text" : "password"}
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
               placeholder="Confirm your new password"
-              className="input-box-style w-full"
+              className="w-full px-4 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
             />
             <span
-              className="absolute right-3 top-3 cursor-pointer"
-              onClick={() => setShowConfirmPassword(!showConfirmPassword)} // Toggle visibility
+              className="absolute right-3 top-3 cursor-pointer text-gray-500 hover:text-indigo-600"
+              onClick={() => setShowConfirmPassword(!showConfirmPassword)}
             >
               {showConfirmPassword ? <AiFillEyeInvisible /> : <AiFillEye />}
             </span>
           </div>
 
-          {passwordError && <p className="text-red-500 text-sm">{passwordError}</p>}
-          <button
-            className="w-full bg-indigo-600 text-white rounded-md px-3 py-2 mt-2"
+          {passwordError && (
+            <p className="text-red-500 text-sm mt-2">{passwordError}</p>
+          )}
+
+          <NavBtns
+            className="w-full bg-indigo-600 text-white rounded-lg px-4 py-2 mt-4 transition-transform hover:scale-105 focus:ring-2 focus:ring-indigo-500 focus:outline-none"
             onClick={handlePasswordUpdate}
             disabled={loading || !newPassword || !confirmPassword}
           >
             {loading ? 'Updating...' : 'Update Password'}
-          </button>
+          </NavBtns>
         </div>
-        <button
-          className="w-full bg-gray-200 text-black rounded-md px-3 py-2 mt-2"
+
+        <NavBtns
+          className="w-full bg-gray-200 text-gray-700 rounded-lg px-4 py-2 mt-4 hover:bg-gray-300 transition-colors"
           onClick={onClose}
         >
           Close
-        </button>
+        </NavBtns>
       </div>
     </div>
   );

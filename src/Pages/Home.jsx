@@ -1,5 +1,5 @@
 import React, { Suspense, lazy } from 'react'
-import CheckPage from '../Components/CheckPage';
+import CheckPage from '../Sections/CheckPage';
 import Loading from '../Components/Loading';
 
 const NavBar = lazy(() => import('../Components/NavBar'))

@@ -1,17 +1,17 @@
 import React, { lazy } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
-import CheckPage from './Components/CheckPage';
-import PageNotFound from './Components/PageNotFound';
+import CheckPage from './Sections/CheckPage';
+import PageNotFound from './Sections/PageNotFound';
+import ErrorBoundary from './Components/ErrorBoundary';
 
 const Home = lazy(() => import('./Pages/Home'));
 const CategoriesPage = lazy(() => import('./Pages/CategoriesPage'));
 const Cart = lazy(() => import('./Pages/Cart'));
 const OrderConfirmationPage = lazy(() => import('./Pages/OrderConfirmationPage'));
-const SignIn = lazy(() => import('./Components/SignIn'));
-const SignUp = lazy(() => import('./Components/SignUp'));
+const SignIn = lazy(() => import('./Sections/SignIn'));
+const SignUp = lazy(() => import('./Sections/SignUp'));
 const UserOrders = lazy(() => import('./Pages/UserOrders'));
-const ForgetPassword = lazy(() => import('./Pages/ForgetPassword'));
 
 
 const HomeWith404 = CheckPage(Home);
@@ -21,11 +21,12 @@ const OrderConfirmationPageWith404 = CheckPage(OrderConfirmationPage);
 const SignInWith404 = CheckPage(SignIn);
 const SignUpWith404 = CheckPage(SignUp);
 const UserOrdersWith404 = CheckPage(UserOrders);
-const ForgetPasswordWith404 = CheckPage(ForgetPassword);
+
 
 const App = () => {
   return (
     <main className='w-[100vw] relative'>
+      <ErrorBoundary />
       <Routes>
         <Route path='/' element={<HomeWith404 />} />
         <Route path='/all-categories' element={<CategoriesPageWith404 />} />
@@ -34,7 +35,7 @@ const App = () => {
         <Route path='/sign-in' element={<SignInWith404 />} />
         <Route path='/sign-up' element={<SignUpWith404 />} />
         <Route path='/user-orders' element={<UserOrdersWith404 />} />
-        <Route path='/forget-password' element={<ForgetPasswordWith404 />} />
+
 
         {/* Catch-all route for unmatched paths */}
         <Route path='*' element={<PageNotFound />} />

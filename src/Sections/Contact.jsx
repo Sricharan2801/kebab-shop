@@ -8,7 +8,7 @@ const Contact = () => {
                 <h1 className='page-title lg:pl-[15%] pl-10  lg:pt-24'>
                     Get in touch
                 </h1>
-                <p className='lg:w-[90%] w-full lg:pl-14 pl-10 font-normal text-balance'>
+                <p className='lg:w-[90%] w-full lg:pl-14 pl-10 font-inter text-balance'>
                     Craving the best kababs in town? Reach out to us for orders, menu inquiries, or any special requests. We're here to serve you!
                 </p>
             </div>
